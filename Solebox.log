@@ -1,0 +1,55 @@
+2021-01-21 00:43:15,798 - root - Successfully started monitor
+2021-01-21 00:43:59,388 - root - Successfully started monitor
+2021-01-21 00:43:59,391 - urllib3.connectionpool - Starting new HTTPS connection (1): discord.com:443
+2021-01-21 00:43:59,768 - urllib3.connectionpool - https://discord.com:443 "POST /api/webhooks/801433047530078249/bXvUhsFp2w6bMNrX1DHALUUtgB7VJ4lLCIH5ORK5lapzZ4D5c-JqWchDtj_t7JCuz1h7 HTTP/1.1" 204 0
+2021-01-21 00:43:59,771 - root - Payload delivered successfully, code 204.
+2021-01-21 00:43:59,773 - urllib3.connectionpool - Starting new HTTPS connection (1): sneakerindustry.ro:443
+2021-01-21 00:44:00,224 - urllib3.connectionpool - https://sneakerindustry.ro:443 "GET /ro/13-sneakers-barbati HTTP/1.1" 200 None
+2021-01-21 00:44:01,391 - urllib3.connectionpool - Starting new HTTPS connection (1): sneakerindustry.ro:443
+2021-01-21 00:44:01,716 - urllib3.connectionpool - https://sneakerindustry.ro:443 "GET /ro/13-sneakers-barbati HTTP/1.1" 200 None
+2021-01-21 00:44:02,887 - urllib3.connectionpool - Starting new HTTPS connection (1): sneakerindustry.ro:443
+2021-01-21 00:44:03,228 - urllib3.connectionpool - https://sneakerindustry.ro:443 "GET /ro/13-sneakers-barbati HTTP/1.1" 200 None
+2021-01-21 00:44:04,419 - urllib3.connectionpool - Starting new HTTPS connection (1): sneakerindustry.ro:443
+2021-01-21 00:44:04,784 - urllib3.connectionpool - https://sneakerindustry.ro:443 "GET /ro/13-sneakers-barbati HTTP/1.1" 200 None
+2021-01-21 00:44:05,967 - urllib3.connectionpool - Starting new HTTPS connection (1): sneakerindustry.ro:443
+2021-01-21 00:44:06,294 - urllib3.connectionpool - https://sneakerindustry.ro:443 "GET /ro/13-sneakers-barbati HTTP/1.1" 200 None
+2021-01-21 00:44:07,602 - urllib3.connectionpool - Starting new HTTPS connection (1): sneakerindustry.ro:443
+2021-01-21 00:44:08,021 - urllib3.connectionpool - https://sneakerindustry.ro:443 "GET /ro/13-sneakers-barbati HTTP/1.1" 200 None
+2021-01-21 00:44:09,255 - urllib3.connectionpool - Starting new HTTPS connection (1): sneakerindustry.ro:443
+2021-01-21 00:44:09,733 - urllib3.connectionpool - https://sneakerindustry.ro:443 "GET /ro/13-sneakers-barbati HTTP/1.1" 200 None
+2021-01-21 00:44:10,931 - urllib3.connectionpool - Starting new HTTPS connection (1): sneakerindustry.ro:443
+2021-01-21 00:44:11,265 - urllib3.connectionpool - https://sneakerindustry.ro:443 "GET /ro/13-sneakers-barbati HTTP/1.1" 200 None
+2021-01-21 00:44:12,434 - urllib3.connectionpool - Starting new HTTPS connection (1): sneakerindustry.ro:443
+2021-01-21 00:44:12,768 - urllib3.connectionpool - https://sneakerindustry.ro:443 "GET /ro/13-sneakers-barbati HTTP/1.1" 200 None
+2021-01-21 00:44:13,952 - urllib3.connectionpool - Starting new HTTPS connection (1): sneakerindustry.ro:443
+2021-01-21 00:44:14,305 - urllib3.connectionpool - https://sneakerindustry.ro:443 "GET /ro/13-sneakers-barbati HTTP/1.1" 200 None
+2021-01-21 00:44:15,544 - urllib3.connectionpool - Starting new HTTPS connection (1): sneakerindustry.ro:443
+2021-01-21 00:44:15,917 - urllib3.connectionpool - https://sneakerindustry.ro:443 "GET /ro/13-sneakers-barbati HTTP/1.1" 200 None
+2021-01-21 00:44:17,099 - urllib3.connectionpool - Starting new HTTPS connection (1): sneakerindustry.ro:443
+2021-01-21 00:44:17,414 - urllib3.connectionpool - https://sneakerindustry.ro:443 "GET /ro/13-sneakers-barbati HTTP/1.1" 200 None
+2021-01-21 00:44:18,589 - urllib3.connectionpool - Starting new HTTPS connection (1): sneakerindustry.ro:443
+2021-01-21 00:44:18,942 - urllib3.connectionpool - https://sneakerindustry.ro:443 "GET /ro/13-sneakers-barbati HTTP/1.1" 200 None
+2021-01-21 00:44:20,116 - urllib3.connectionpool - Starting new HTTPS connection (1): sneakerindustry.ro:443
+2021-01-21 00:44:20,488 - urllib3.connectionpool - https://sneakerindustry.ro:443 "GET /ro/13-sneakers-barbati HTTP/1.1" 200 None
+2021-01-21 00:44:21,655 - urllib3.connectionpool - Starting new HTTPS connection (1): sneakerindustry.ro:443
+2021-01-21 00:44:22,062 - urllib3.connectionpool - https://sneakerindustry.ro:443 "GET /ro/13-sneakers-barbati HTTP/1.1" 200 None
+2021-01-21 00:44:23,245 - urllib3.connectionpool - Starting new HTTPS connection (1): sneakerindustry.ro:443
+2021-01-21 00:44:23,586 - urllib3.connectionpool - https://sneakerindustry.ro:443 "GET /ro/13-sneakers-barbati HTTP/1.1" 200 None
+2021-01-21 00:44:24,794 - urllib3.connectionpool - Starting new HTTPS connection (1): sneakerindustry.ro:443
+2021-01-21 00:44:25,159 - urllib3.connectionpool - https://sneakerindustry.ro:443 "GET /ro/13-sneakers-barbati HTTP/1.1" 200 None
+2021-01-21 00:44:26,345 - urllib3.connectionpool - Starting new HTTPS connection (1): sneakerindustry.ro:443
+2021-01-21 00:44:26,694 - urllib3.connectionpool - https://sneakerindustry.ro:443 "GET /ro/13-sneakers-barbati HTTP/1.1" 200 None
+2021-01-21 00:44:27,920 - urllib3.connectionpool - Starting new HTTPS connection (1): sneakerindustry.ro:443
+2021-01-21 00:44:28,222 - urllib3.connectionpool - https://sneakerindustry.ro:443 "GET /ro/13-sneakers-barbati HTTP/1.1" 200 None
+2021-01-21 00:44:29,402 - urllib3.connectionpool - Starting new HTTPS connection (1): sneakerindustry.ro:443
+2021-01-21 00:44:29,770 - urllib3.connectionpool - https://sneakerindustry.ro:443 "GET /ro/13-sneakers-barbati HTTP/1.1" 200 None
+2021-01-21 00:44:37,464 - root - Successfully started monitor
+2021-01-21 00:44:37,467 - urllib3.connectionpool - Starting new HTTPS connection (1): discord.com:443
+2021-01-21 00:44:37,853 - urllib3.connectionpool - https://discord.com:443 "POST /api/webhooks/801433047530078249/bXvUhsFp2w6bMNrX1DHALUUtgB7VJ4lLCIH5ORK5lapzZ4D5c-JqWchDtj_t7JCuz1h7 HTTP/1.1" 204 0
+2021-01-21 00:44:37,855 - root - Payload delivered successfully, code 204.
+2021-01-21 00:44:37,857 - urllib3.connectionpool - Starting new HTTPS connection (1): sneakerindustry.ro:443
+2021-01-21 00:44:38,157 - urllib3.connectionpool - https://sneakerindustry.ro:443 "GET /ro/13-sneakers-barbati HTTP/1.1" 200 None
+2021-01-21 00:44:39,367 - urllib3.connectionpool - Starting new HTTPS connection (1): sneakerindustry.ro:443
+2021-01-21 00:44:39,749 - urllib3.connectionpool - https://sneakerindustry.ro:443 "GET /ro/13-sneakers-barbati HTTP/1.1" 200 None
+2021-01-21 00:44:40,913 - urllib3.connectionpool - Starting new HTTPS connection (1): sneakerindustry.ro:443
+2021-01-21 00:44:41,224 - urllib3.connectionpool - https://sneakerindustry.ro:443 "GET /ro/13-sneakers-barbati HTTP/1.1" 200 None
