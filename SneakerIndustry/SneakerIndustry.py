@@ -41,6 +41,12 @@ def scrape_main_site(headers):
     itemsRedirect = soup.find_all('h2', {'itemprop': 'name'})
     itemsImage = soup.find_all('img', {'class': 'hover-img'})
     itemsPrice = soup.find_all('span',{'class':'price'})
+    itemsSizes = soup.find_all('article', 'class':'product-miniature home-product')
+    ################## DE FACUT SA CAUTE MARIMI
+        """
+        docstring
+        """
+        pass)
     for i in range(48):
         itemsName[i] = itemsName[i].text
         itemsModel[i] = itemsModel[i].text
@@ -65,8 +71,8 @@ def discord_webhook(product_item):
     data["avatar_url"] = CONFIG['AVATAR_URL']
     data["embeds"] = []
     embed = {}
-    embed["title"] = product_item[0]  # Nume produs
-    embed["description"] = f"{product_item[1]}\n{product_item[4]}" # Model produs
+    embed["title"] = f"{product_item[0]} {product_item[1]}"  # Nume produs
+    embed["description"] = f"**Pret:**\n{product_item[4]}" # Model produs
     embed['url'] = f'{product_item[2]}'  # Link produs
     embed["thumbnail"] = {'url': product_item[3]}  # Imagine produs
     embed["color"] = int(CONFIG['COLOUR'])
