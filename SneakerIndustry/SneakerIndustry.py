@@ -33,20 +33,18 @@ def scrape_main_site(headers):
     itemsRedirect = soup.find_all('h2', {'itemprop': 'name'})
     itemsImage = soup.find_all('img', {'class': 'hover-img'})
     itemsPrice = soup.find_all('span',{'class':'price'})
-    itemsSizes = soup.find_all('article', {'class':'product-miniature home-product'})
+    itemsSizes = []
     ################## DE FACUT SA CAUTE MARIMI
-        """
-        docstring
-        """
-        pass)
     for i in range(48):
         itemsName[i] = itemsName[i].text
+        itemsSizes[i] = itemsModel[i].find_next_sibling("h2").text
         itemsModel[i] = itemsModel[i].text
         itemsRedirect[i] = itemsRedirect[i].find('a')['href']
         itemsImage[i] = itemsImage[i]['data-full-size-image-url']
         itemsPrice[i] = itemsPrice[i].text
-        print(f'Brand: {itemsName[i]}\nModel: {itemsModel[i]}\nLink: {itemsRedirect[i]}\nImagine: {itemsImage[i]}\nPret: {itemsPrice[i]}')
-        item = [itemsName[i],itemsModel[i],itemsRedirect[i],itemsImage[i],itemsPrice[i]]
+        
+        print(f'Brand: {itemsName[i]}\nModel: {itemsModel[i]}\nLink: {itemsRedirect[i]}\nImagine: {itemsImage[i]}\nPret: {itemsPrice[i]}\nMarimi disponibile: {itemsSizes[i]}')
+        item = [itemsName[i],itemsModel[i],itemsRedirect[i],itemsImage[i],itemsPrice[i],itemsSizes[i]]
         items.append(item)
     return items
 
