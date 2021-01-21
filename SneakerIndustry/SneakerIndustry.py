@@ -9,7 +9,7 @@ import urllib3
 from random_user_agent.user_agent import UserAgent
 from random_user_agent.params import SoftwareName, HardwareType
 
-logging.basicConfig(filename='Zalandolog.log', filemode='a', format='%(asctime)s - %(name)s - %(message)s',
+logging.basicConfig(filename='log.log', filemode='a', format='%(asctime)s - %(name)s - %(message)s',
                     level=logging.DEBUG)
 
 software_names = [SoftwareName.CHROME.value]
@@ -17,14 +17,6 @@ hardware_type = [HardwareType.MOBILE__PHONE]
 user_agent_rotator = UserAgent(software_names=software_names, hardware_type=hardware_type)
 CONFIG = dotenv.dotenv_values()
 headers = {'User-Agent': user_agent_rotator.get_random_user_agent()}
-
-INSTOCK = []
-
-
-"""
-TO DO: EMBED MESSAGE DISCORD .
-"""
-
 
 def scrape_main_site(headers):
     """
@@ -41,7 +33,7 @@ def scrape_main_site(headers):
     itemsRedirect = soup.find_all('h2', {'itemprop': 'name'})
     itemsImage = soup.find_all('img', {'class': 'hover-img'})
     itemsPrice = soup.find_all('span',{'class':'price'})
-    itemsSizes = soup.find_all('article', 'class':'product-miniature home-product')
+    itemsSizes = soup.find_all('article', {'class':'product-miniature home-product'})
     ################## DE FACUT SA CAUTE MARIMI
         """
         docstring
@@ -113,78 +105,3 @@ monitor()
 ######################################################################################################
 ###############    DACA CITESTI ASTA, SA MOARA MAMA CA M-AM CHINUIT ZILE COAIE    ####################
 ######################################################################################################
-
-"""
-def checker(item):
-
-    Determines whether the product status has changed
-    :param item: list of item details
-    :return: Boolean whether the status has changed or not
-
-    for product in INSTOCK:
-        if product == item:
-            return True
-    return False
-
-
-def remove_duplicates(mylist):
-
-    Removes duplicate values from a list
-    :param mylist: list
-    :return: list
-
-    return [list(t) for t in set(tuple(element) for element in mylist)]
-
-
-def comparitor(item, start):
-    if not checker(item):
-        INSTOCK.append(item)
-        if start == 0:
-            discord_webhook(item)
-
-
-def monitor():
-
-    Initiates monitor
-    :return:
-
-
-    print('PORNim monitorizarea.')
-    logging.info(msg='Monitorizarea a inceput.')
-    discord_webhook('initial')
-    start = 1
-    proxy_no = 0
-
-    proxy_list = CONFIG['PROXY'].split('%')
-    proxy = {} if proxy_list[0] == "" else {"http": f"http://{proxy_list[proxy_no]}"}
-    headers = {'User-Agent': user_agent_rotator.get_random_user_agent()}
-    keywords = CONFIG['KEYWORDS'].split('%')
-    while True:
-        try:
-            items = remove_duplicates(scrape_main_site(headers, proxy))
-            for item in items:
-                check = False
-                if keywords == '':
-                    comparitor(item, start)
-                else:
-                    for key in keywords:
-                        if key.lower() in item[0].lower():
-                            check = True
-                            break
-                    if check:
-                        comparitor(item, start)
-            time.sleep(float(CONFIG['DELAY']))
-            start = 0
-        except Exception as e:
-            print(e)
-            logging.error(e)
-            headers = {'User-Agent': user_agent_rotator.get_random_user_agent()}
-            if proxy != {}:
-                proxy_no = 0 if proxy_no == (len(proxy_list) - 1) else proxy_no + 1
-                proxy = {"http": f"http://{proxy_list[proxy_no]}"}
-
-
-if __name__ == '__main__':
-    urllib3.disable_warnings()
-    monitor()
-"""
