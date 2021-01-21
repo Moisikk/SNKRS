@@ -37,7 +37,7 @@ def scrape_main_site(headers):
     ################## DE FACUT SA CAUTE MARIMI
     for i in range(48):
         itemsName[i] = itemsName[i].text
-        itemsSizes[i] = itemsModel[i].find_next_sibling("h2").text
+        itemsSizes[i] = itemsModel[i].find_next("h2").text
         itemsModel[i] = itemsModel[i].text
         itemsRedirect[i] = itemsRedirect[i].find('a')['href']
         itemsImage[i] = itemsImage[i]['data-full-size-image-url']
