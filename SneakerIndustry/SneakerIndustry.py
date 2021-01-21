@@ -87,10 +87,10 @@ def discord_webhook(product_item):
 
 def checkItems(items):
     for i in range(0,48):
-        for j in range(0,48):
-            if items[i]==lastItems[j]:
-                return
-        discord_webhook(items[i])
+        if not items[i] in lastItems:
+            time.sleep(0.5)
+            discord_webhook(items[i])
+    for i in range(0,48):
         lastItems[i] = items[i]
 
 
