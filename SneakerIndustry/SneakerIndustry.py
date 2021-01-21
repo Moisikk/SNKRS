@@ -16,20 +16,23 @@ software_names = [SoftwareName.CHROME.value]
 hardware_type = [HardwareType.MOBILE__PHONE]
 user_agent_rotator = UserAgent(software_names=software_names, hardware_type=hardware_type)
 CONFIG = dotenv.dotenv_values()
+headers = {'User-Agent': user_agent_rotator.get_random_user_agent()}
 
 INSTOCK = []
+
 
 """
 TO DO: EMBED MESSAGE DISCORD .
 """
 
-def scrape_main_site(headers, proxy):
+
+def scrape_main_site(headers):
     """
     Scrape the Sneaker Industry site and adds each item to an array
     :return:
     """
     items = []
-    url = 'https://sneakerindustry.ro/ro/produse-noi'
+    url = 'https://sneakerindustry.ro/ro/13-sneakers-barbati'
     s = requests.Session()
     html = s.get(url=url, headers=headers, proxies=proxy, verify=False, timeout=15)
     soup = BeautifulSoup(html.text, 'html.parser')
@@ -46,7 +49,8 @@ def scrape_main_site(headers, proxy):
         item = [itemsName[i],itemsModel[i],itemsRedirect[i],itemsImage[i]]
         items.append(item)
     return items
-    
+
+lastItems = scrape_main_site(headers)
 
 def discord_webhook(product_item):
     """
@@ -59,13 +63,10 @@ def discord_webhook(product_item):
     data["avatar_url"] = CONFIG['AVATAR_URL']
     data["embeds"] = []
     embed = {}
-    if product_item == 'initial':
-        embed["description"] = "Multumim ca folosesti discord-ul Busta Romania!"
-    else:
-        embed["title"] = product_item[0]  # Nume produs
-        embed["description"] = product_item[1]
-        embed["thumbnail"] = {'url': product_item[3]}  # Imagine produs
-
+    embed["title"] = product_item[0]  # Nume produs
+    embed["description"] = product_item[1] # Model produs
+    embed['url'] = f'{product_item[2]}'  # Link produs in rasa ma-ti
+    embed["thumbnail"] = {'url': product_item[3]}  # Imagine produs
     embed["color"] = int(CONFIG['COLOUR'])
     embed["footer"] = {'text': 'Powered by Busta Romania.'}
     embed["timestamp"] = str(datetime.datetime.utcnow())
@@ -82,13 +83,41 @@ def discord_webhook(product_item):
         print("Payload delivered successfully, code {}.".format(result.status_code))
         logging.info("Payload delivered successfully, code {}.".format(result.status_code))
 
+def checkItems(items):
+    currentItemURL = items[0]
+    currentItemURL = currentItemURL[2]
+    lastItemURL = lastItems[0]
+    lastItemURL = lastItemURL[2]
+    newItems = []
+    newItemCounter = 0
+    if(currentItemURL != lastItemURL):
+        for i in range(48):
+            if(currentItems[i][2]!=lastItemURL):
+                newItems.append(currentItems[i])
+                newItemCounter+=1
+                discord_webhook(currentItems[i])
+            else:
+                for k in newItemCounter:
+                    for j in range(48,1):
+                        lastItems[j] = lastItems[j-1]
+                for z in range(0,newItemCounter):
+                    lastItems[z] = newItems[z]
 
+true = True
+
+def monitor():
+    while true==True:
+        currentItems = scrape_main_site(headers)
+        checkItems(currentItems)
+        time.sleep(30)
+
+"""
 def checker(item):
-    """
+
     Determines whether the product status has changed
     :param item: list of item details
     :return: Boolean whether the status has changed or not
-    """
+
     for product in INSTOCK:
         if product == item:
             return True
@@ -96,11 +125,11 @@ def checker(item):
 
 
 def remove_duplicates(mylist):
-    """
+
     Removes duplicate values from a list
     :param mylist: list
     :return: list
-    """
+
     return [list(t) for t in set(tuple(element) for element in mylist)]
 
 
@@ -112,10 +141,11 @@ def comparitor(item, start):
 
 
 def monitor():
-    """
+
     Initiates monitor
     :return:
-    """
+
+
     print('PORNim monitorizarea.')
     logging.info(msg='Monitorizarea a inceput.')
     discord_webhook('initial')
@@ -154,3 +184,4 @@ def monitor():
 if __name__ == '__main__':
     urllib3.disable_warnings()
     monitor()
+"""
