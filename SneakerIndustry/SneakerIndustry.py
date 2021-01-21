@@ -65,7 +65,7 @@ def discord_webhook(product_item):
     embed = {}
     embed["title"] = product_item[0]  # Nume produs
     embed["description"] = product_item[1] # Model produs
-    embed['url'] = f'{product_item[2]}'  # Link produs in rasa ma-ti
+    embed['url'] = f'{product_item[2]}'  # Link produs
     embed["thumbnail"] = {'url': product_item[3]}  # Imagine produs
     embed["color"] = int(CONFIG['COLOUR'])
     embed["footer"] = {'text': 'Powered by Busta Romania.'}
@@ -84,24 +84,13 @@ def discord_webhook(product_item):
         logging.info("Payload delivered successfully, code {}.".format(result.status_code))
 
 def checkItems(items):
-    currentItemURL = items[0]
-    currentItemURL = currentItemURL[2]
-    lastItemURL = lastItems[0]
-    lastItemURL = lastItemURL[2]
-    newItems = []
-    newItemCounter = 0
-    if(currentItemURL != lastItemURL):
-        for i in range(48):
-            if(currentItems[i][2]!=lastItemURL):
-                newItems.append(currentItems[i])
-                newItemCounter+=1
-                discord_webhook(currentItems[i])
-            else:
-                for k in newItemCounter:
-                    for j in range(48,1):
-                        lastItems[j] = lastItems[j-1]
-                for z in range(0,newItemCounter):
-                    lastItems[z] = newItems[z]
+    for i in range(0,48):
+        for j in range(0,48):
+            if items[i]==lastItems[j]:
+                break
+        discord_webhook(items[i])
+        lastItems[i] = items[i]
+        
 
 true = True
 
@@ -110,6 +99,10 @@ def monitor():
         currentItems = scrape_main_site(headers)
         checkItems(currentItems)
         time.sleep(30)
+
+######################################################################################################
+###############    DACA CITESTI ASTA, SA MOARA MAMA CA M-AM CHINUIT ZILE COAIE    ####################
+######################################################################################################
 
 """
 def checker(item):
