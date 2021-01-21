@@ -32,21 +32,23 @@ def scrape_main_site(headers):
     :return:
     """
     items = []
-    url = 'https://sneakerindustry.ro/ro/13-sneakers-barbati'
+    url = 'https://adismecher.space/test'
     s = requests.Session()
-    html = s.get(url=url, headers=headers, proxies=proxy, verify=False, timeout=15)
+    html = s.get(url=url, headers=headers, verify=False, timeout=15)
     soup = BeautifulSoup(html.text, 'html.parser')
     itemsName = soup.find_all('p', {'class': 'manufacturer-name'})
     itemsModel = soup.find_all('h2', {'itemprop': 'name'})
     itemsRedirect = soup.find_all('h2', {'itemprop': 'name'})
     itemsImage = soup.find_all('img', {'class': 'hover-img'})
+    itemsPrice = soup.find_all('span',{'class':'price'})
     for i in range(48):
         itemsName[i] = itemsName[i].text
         itemsModel[i] = itemsModel[i].text
         itemsRedirect[i] = itemsRedirect[i].find('a')['href']
         itemsImage[i] = itemsImage[i]['data-full-size-image-url']
-        print(f'Brand: {itemsName[i]}\nModel: {itemsModel[i]}\nLink: {itemsRedirect[i]}\nImagine: {itemsImage[i]}')
-        item = [itemsName[i],itemsModel[i],itemsRedirect[i],itemsImage[i]]
+        itemsPrice[i] = itemsPrice[i].text
+        print(f'Brand: {itemsName[i]}\nModel: {itemsModel[i]}\nLink: {itemsRedirect[i]}\nImagine: {itemsImage[i]}\nPret: {itemsPrice[i]}')
+        item = [itemsName[i],itemsModel[i],itemsRedirect[i],itemsImage[i],itemsPrice[i]]
         items.append(item)
     return items
 
@@ -64,7 +66,7 @@ def discord_webhook(product_item):
     data["embeds"] = []
     embed = {}
     embed["title"] = product_item[0]  # Nume produs
-    embed["description"] = product_item[1] # Model produs
+    embed["description"] = f"{product_item[1]}\n{product_item[4]}" # Model produs
     embed['url'] = f'{product_item[2]}'  # Link produs
     embed["thumbnail"] = {'url': product_item[3]}  # Imagine produs
     embed["color"] = int(CONFIG['COLOUR'])
@@ -87,10 +89,10 @@ def checkItems(items):
     for i in range(0,48):
         for j in range(0,48):
             if items[i]==lastItems[j]:
-                break
+                return
         discord_webhook(items[i])
         lastItems[i] = items[i]
-        
+
 
 true = True
 
@@ -99,6 +101,8 @@ def monitor():
         currentItems = scrape_main_site(headers)
         checkItems(currentItems)
         time.sleep(30)
+
+monitor()
 
 ######################################################################################################
 ###############    DACA CITESTI ASTA, SA MOARA MAMA CA M-AM CHINUIT ZILE COAIE    ####################
