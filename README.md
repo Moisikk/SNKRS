@@ -4,7 +4,7 @@
 ## Despre proiect
 Acest proiect a fost creeat pentru monitorizarea site-urilor de fashion din Romania la cererea Busta Romania.
 
-O lista cu toate site-urile suportate momentan le puteti vedea [aici](#Site-uri).
+O lista cu toate site-urile suportate momentan le puteti vedea [aici](#site-uri-monitorizate).
 
 *Mai jos este un exemplu despre cum merge bot-ul...*
 
