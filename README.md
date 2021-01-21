@@ -1,13 +1,8 @@
 # Sneaker Monitors
 *A collection of web monitors that notify of restocks or updates on sneaker related sites through Discord Webhook*
 
-<a href="https://www.buymeacoffee.com/yasserqureshi" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
-
 To be notified of changes, please **star** or **watch** this repository.
 This will also increase the awareness of the project for others to use or add to. 
-
-I have recently created a Discord server where you can learn to use, get notified of updates and ask questions on the monitors on this repo.
-You can join [here](https://discord.gg/jjbtWcBczb) 
 
 ## About the Project
 This project is aimed to provide different monitors to various sites to the sneaker community for free. 
@@ -17,11 +12,6 @@ As such, I have and will continue to develop monitors that will help those membe
 
 The monitors are developed in a user friendly way for those members that may lack coding experience.
 The installation instructions can be found [here](#installation). 
-
-This project is continually expanding, and I would greatly appreciate any contributions. 
-When contributing please fork the project and open a Pull Request.
-If you'd like a feature to be added, you can either open an issue [here](https://github.com/yasserqureshi1/Sneaker-Monitors/issues/new)
-or get in contact with me [here](#contact)
 
 A list of the current sites can be found [here](#monitors) along with the current status.
 
@@ -125,12 +115,4 @@ It contains no personal data but may help me diagnose where the issue arises.
  - [ ] Create price reduction monitors
  - [ ] Add other requested site (Off-White, Footpatrol, JD, BSTN, Size?, SNS, Naked, Net-a-porter, Footdistrict, oneblockdown, noirfonce and Sivasdescalzo)
  - [ ] Increase number of countries catered for
-
-## License
-
-Distributed under the MIT License. See ```LICENSE``` for more information.
-
-## Contact
-
-For help join my Discord server [here](https://discord.gg/jjbtWcBczb) and post a question in the #questions channel
 
