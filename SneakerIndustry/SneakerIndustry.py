@@ -5,6 +5,7 @@ import dotenv
 import datetime
 import json
 import time
+import re
 import urllib3
 from random_user_agent.user_agent import UserAgent
 from random_user_agent.params import SoftwareName, HardwareType
@@ -24,7 +25,7 @@ def scrape_main_site(headers):
     :return:
     """
     items = []
-    url = 'https://adismecher.space/test'
+    url = 'https://sneakerindustry.ro/ro/13-sneakers-barbati'
     s = requests.Session()
     html = s.get(url=url, headers=headers, verify=False, timeout=15)
     soup = BeautifulSoup(html.text, 'html.parser')
@@ -33,18 +34,17 @@ def scrape_main_site(headers):
     itemsRedirect = soup.find_all('h2', {'itemprop': 'name'})
     itemsImage = soup.find_all('img', {'class': 'hover-img'})
     itemsPrice = soup.find_all('span',{'class':'price'})
-    itemsSizes = []
+    
     ################## DE FACUT SA CAUTE MARIMI
     for i in range(48):
         itemsName[i] = itemsName[i].text
-        itemsSizes[i] = itemsModel[i].find_next("h2").text
         itemsModel[i] = itemsModel[i].text
         itemsRedirect[i] = itemsRedirect[i].find('a')['href']
         itemsImage[i] = itemsImage[i]['data-full-size-image-url']
         itemsPrice[i] = itemsPrice[i].text
         
-        print(f'Brand: {itemsName[i]}\nModel: {itemsModel[i]}\nLink: {itemsRedirect[i]}\nImagine: {itemsImage[i]}\nPret: {itemsPrice[i]}\nMarimi disponibile: {itemsSizes[i]}')
-        item = [itemsName[i],itemsModel[i],itemsRedirect[i],itemsImage[i],itemsPrice[i],itemsSizes[i]]
+        print(f'Brand: {itemsName[i]}\nModel: {itemsModel[i]}\nLink: {itemsRedirect[i]}\nImagine: {itemsImage[i]}\nPret: {itemsPrice[i]}\n')
+        item = [itemsName[i],itemsModel[i],itemsRedirect[i],itemsImage[i],itemsPrice[i]]
         items.append(item)
     return items
 
