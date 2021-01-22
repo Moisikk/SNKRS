@@ -30,20 +30,18 @@ def scrape_main_site(headers):
     html = s.get(url=url, headers=headers, verify=False, timeout=15)
     soup = BeautifulSoup(html.text, 'html.parser')
     itemsName = soup.find_all('p', {'class': 'manufacturer-name'})
-    itemsModel = soup.find_all('h2', {'itemprop': 'name'})
+    itemsModel = soup.find_all('h2',{'itemprop':'name'})
     itemsRedirect = soup.find_all('h2', {'itemprop': 'name'})
     itemsImage = soup.find_all('img', {'class': 'hover-img'})
     itemsPrice = soup.find_all('span',{'class':'price'})
-    
-    ################## DE FACUT SA CAUTE MARIMI
+    ################## NU MERGE COAIE SA IAU MARIMILE CA AU SITE-U FACUT PROST
     for i in range(48):
         itemsName[i] = itemsName[i].text
-        itemsModel[i] = itemsModel[i].text
+        itemsModel[i] = itemsModel[i].find('a').text
         itemsRedirect[i] = itemsRedirect[i].find('a')['href']
         itemsImage[i] = itemsImage[i]['data-full-size-image-url']
         itemsPrice[i] = itemsPrice[i].text
-        
-        print(f'Brand: {itemsName[i]}\nModel: {itemsModel[i]}\nLink: {itemsRedirect[i]}\nImagine: {itemsImage[i]}\nPret: {itemsPrice[i]}\n')
+        print(f'Brand: {itemsName[i]}\nModel: {itemsModel[i]}\nLink: {itemsRedirect[i]}\nImagine: {itemsImage[i]}\nPret: {itemsPrice[i]}')
         item = [itemsName[i],itemsModel[i],itemsRedirect[i],itemsImage[i],itemsPrice[i]]
         items.append(item)
     return items
@@ -62,7 +60,7 @@ def discord_webhook(product_item):
     data["embeds"] = []
     embed = {}
     embed["title"] = f"{product_item[0]} {product_item[1]}"  # Nume produs
-    embed["description"] = f"**Pret:**\n{product_item[4]}" # Model produs
+    embed["description"] = f"**Pret:**\n{product_item[4]}\n**Disponibil:**{product_item[5]}" # Model produs
     embed['url'] = f'{product_item[2]}'  # Link produs
     embed["thumbnail"] = {'url': product_item[3]}  # Imagine produs
     embed["color"] = int(CONFIG['COLOUR'])
@@ -78,8 +76,8 @@ def discord_webhook(product_item):
         print(err)
         logging.error(msg=err)
     else:
-        print("Payload delivered successfully, code {}.".format(result.status_code))
-        logging.info("Payload delivered successfully, code {}.".format(result.status_code))
+        print("Mesaj trimis cu succes, code {}.".format(result.status_code))
+        logging.info("Mesaj trimis cu succes, code {}.".format(result.status_code))
 
 def checkItems(items):
     for i in range(0,48):
