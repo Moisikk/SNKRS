@@ -10,7 +10,7 @@ import urllib3
 from random_user_agent.user_agent import UserAgent
 from random_user_agent.params import SoftwareName, HardwareType
 
-logging.basicConfig(filename='SNKINDRlog.log', filemode='a', format='%(asctime)s - %(name)s - %(message)s',
+logging.basicConfig(filename='Tikelog.log', filemode='a', format='%(asctime)s - %(name)s - %(message)s',
                     level=logging.DEBUG)
 
 software_names = [SoftwareName.CHROME.value]
@@ -25,22 +25,22 @@ def scrape_main_site(headers):
     :return:
     """
     items = []
-    url = 'https://sneakerindustry.ro/ro/13-sneakers-barbati'
+    url = 'https://www.tike.ro/incaltaminte'
     s = requests.Session()
     html = s.get(url=url, headers=headers, verify=False, timeout=15)
     soup = BeautifulSoup(html.text, 'html.parser')
-    itemsName = soup.find_all('p', {'class': 'manufacturer-name'})
-    itemsModel = soup.find_all('h2',{'itemprop':'name'})
-    itemsRedirect = soup.find_all('h2', {'itemprop': 'name'})
-    itemsImage = soup.find_all('img', {'class': 'hover-img'})
-    itemsPrice = soup.find_all('span',{'class':'price'})
-    ################## NU MERGE COAIE SA IAU MARIMILE CA AU SITE-U FACUT PROST
+    itemsName = soup.find_all('div',{'class':'wrapper-gridalt-view item product-item ease col-xs-6 col-sm-3 col-md-2 col-lg-2 gridalt-view'})
+    itemsModel = soup.find_all('div',{'class':'wrapper-gridalt-view item product-item ease col-xs-6 col-sm-3 col-md-2 col-lg-2 gridalt-view'})
+    itemsRedirect = soup.find_all('div',{'class':'wrapper-gridalt-view item product-item ease col-xs-6 col-sm-3 col-md-2 col-lg-2 gridalt-view'})
+    itemsImage = soup.find_all('div',{'class':'wrapper-gridalt-view item product-item ease col-xs-6 col-sm-3 col-md-2 col-lg-2 gridalt-view'})
+    itemsPrice = soup.find_all('div',{'class':'wrapper-gridalt-view item product-item ease col-xs-6 col-sm-3 col-md-2 col-lg-2 gridalt-view'})
     for i in range(48):
-        itemsName[i] = itemsName[i].text
-        itemsModel[i] = itemsModel[i].find('a').text
-        itemsRedirect[i] = itemsRedirect[i].find('a')['href']
-        itemsImage[i] = itemsImage[i]['data-full-size-image-url']
-        itemsPrice[i] = itemsPrice[i].text
+        itemsName[i]=itemsName[i]['data-productbrand']
+        itemsModel[i]=itemsModel[i]['data-productname']
+        itemsRedirect[i]=itemsRedirect[i].find('a',{'class':'product-link'})['href']
+        itemsImage[i]=itemsImage[i].find('img',{'class':'img-responsive lozad'})['src']
+        itemsImage[i]=f'https://www.tike.ro{itemsImage[i]}'
+        itemsPrice[i]=itemsPrice[i]['data-productprice']
         print(f'Brand: {itemsName[i]}\nModel: {itemsModel[i]}\nLink: {itemsRedirect[i]}\nImagine: {itemsImage[i]}\nPret: {itemsPrice[i]}')
         item = [itemsName[i],itemsModel[i],itemsRedirect[i],itemsImage[i],itemsPrice[i]]
         items.append(item)

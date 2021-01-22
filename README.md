@@ -16,8 +16,8 @@ O lista cu toate site-urile suportate momentan le puteti vedea [aici](#site-uri-
 
 Site-urile care sunt monitoritate momentan:
 - Sneaker Industry
-## TO DO
 - Tike!
+## TO DO
 - RapCity
 - Sizeer
 - Distance
