@@ -148,3 +148,9 @@
 2021-01-23 20:18:54,796 - urllib3.connectionpool - https://sizeer.ro:443 "GET /noutati/categorie-incaltaminte HTTP/1.1" 200 None
 2021-01-23 20:19:36,089 - urllib3.connectionpool - Starting new HTTPS connection (1): sizeer.ro:443
 2021-01-23 20:19:36,614 - urllib3.connectionpool - https://sizeer.ro:443 "GET /noutati/categorie-incaltaminte HTTP/1.1" 200 None
+2021-01-23 20:22:13,248 - urllib3.connectionpool - Starting new HTTPS connection (1): sizeer.ro:443
+2021-01-23 20:22:13,659 - urllib3.connectionpool - https://sizeer.ro:443 "GET /noutati/categorie-incaltaminte HTTP/1.1" 200 None
+2021-01-23 20:22:46,590 - urllib3.connectionpool - Starting new HTTPS connection (1): sizeer.ro:443
+2021-01-23 20:22:47,031 - urllib3.connectionpool - https://sizeer.ro:443 "GET /noutati/categorie-incaltaminte HTTP/1.1" 200 None
+2021-01-23 20:24:06,774 - urllib3.connectionpool - Starting new HTTPS connection (1): sizeer.ro:443
+2021-01-23 20:24:07,153 - urllib3.connectionpool - https://sizeer.ro:443 "GET /noutati/categorie-incaltaminte HTTP/1.1" 200 None

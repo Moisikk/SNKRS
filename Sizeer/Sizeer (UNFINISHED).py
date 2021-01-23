@@ -29,14 +29,15 @@ def scrape_main_site(headers):
     s = requests.Session()
     html = s.get(url=url, headers=headers, verify=False, timeout=15)
     soup = BeautifulSoup(html.text, 'html.parser')
-    itemsName = soup.find_all('div',{'class':'b-itemList_item js-offer-variants offer_830257628 js-offerItem'})
+    itemsName = soup.find_all('div',{'data-ga-currency':'RON'})
     itemsRedirect = soup.find_all('a',{'class':'b-itemList_photoLink'})
-    itemsImage = soup.find_all('img',{'class':'b-itemList_photoMain b-lazy js-offer-photo b-loaded'})
+    itemsImage = soup.find_all('img',{'class':'b-itemList_photoLink'})
     itemsPrice = soup.find_all('p',{'class':'b-itemList_price'})
-    print(itemsName)
     for i in range(48):
         itemsName[i]=itemsName[i]['data-ga-name']
+        print(itemsName[i])
         itemsRedirect[i]=f'https://sizeer.ro{itemsRedirect[i]["href"]}'
+        itemsImage[i]=itemsImage[i].find('img')
         itemsImage[i]=itemsImage[i]['src']
         itemsImage[i]=f'https://sizeer.ro{itemsImage[i]}'
         itemsPrice[i]=itemsPrice[i].text
