@@ -34,7 +34,6 @@ def scrape_main_site(headers):
     itemsRedirect = soup.find_all('h2', {'itemprop': 'name'})
     itemsImage = soup.find_all('img', {'class': 'hover-img'})
     itemsPrice = soup.find_all('span',{'class':'price'})
-    ################## NU MERGE COAIE SA IAU MARIMILE CA AU SITE-U FACUT PROST
     for i in range(48):
         itemsName[i] = itemsName[i].text
         itemsModel[i] = itemsModel[i].find('a').text
@@ -97,7 +96,3 @@ def monitor():
         time.sleep(30)
 
 monitor()
-
-######################################################################################################
-###############    DACA CITESTI ASTA, SA MOARA MAMA CA M-AM CHINUIT ZILE COAIE    ####################
-######################################################################################################
